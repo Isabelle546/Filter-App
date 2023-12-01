@@ -1,5 +1,8 @@
-function preload(){
+noseX=0;
+noseY=0;
 
+function preload(){
+lip_image=loadImage("https://i.postimg.cc/PxFvYgkv/l1.png");
 }
 
 function setup(){
@@ -19,6 +22,7 @@ function modelLoaded(){
 
 function draw(){
 image(video, 0, 0, 300, 300);
+image(lip_image, noseX, noseY, 50, 50);
 }
 
 function take_snapshot(){
@@ -28,7 +32,9 @@ function take_snapshot(){
 function gotPoses(results){
     if(results.length > 0){
         console.log(results);
-        console.log("nose x = "+results[0].pose.nose.x);
-        console.log("nose y = "+results[0].pose.nose.y);
+        noseX=results[0].pose.nose.x-25;
+noseY=results[0].pose.nose.y+10;
+        console.log("nose x = "+noseX);
+        console.log("nose y = "+noseY);
     }
 }
